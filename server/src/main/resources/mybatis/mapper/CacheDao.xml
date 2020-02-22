@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.yeecode.easyrpc.server.dao.CacheDao">
+    <insert id="add" parameterType="CacheModel">
+        INSERT INTO cache (`name`,`url`,`password`)
+        VALUES (#{name},#{url},#{password});
+    </insert>
+
+    <delete id="deleteByName" parameterType="String">
+        DELETE FROM cache WHERE  `name` = #{name};
+    </delete>
+
+    <update id="updateByName" parameterType="CacheModel">
+        UPDATE cache
+        <set>
+            `url` = #{url},
+            `password` = #{password}
+        </set>
+        WHERE name = #{name}
+    </update>
+
+    <select id="queryAll" resultType="CacheModel">
+        SELECT * FROM cache;
+    </select>
+
+    <select id="queryByName" resultType="CacheModel">
+        SELECT * FROM cache WHERE name = #{name};
+    </select>
+</mapper>

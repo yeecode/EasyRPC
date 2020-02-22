@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.yeecode.easyrpc.server.dao.RoleDao">
+    <insert id="add" parameterType="RoleModel">
+        INSERT INTO role (`appName`,`name`,`parentId`,`description`,`type`)
+        VALUES (#{appName},#{name},#{parentId},#{description},#{type});
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM role WHERE  `id` = #{id};
+    </delete>
+
+    <update id="updateById" parameterType="RoleModel">
+        UPDATE role
+        <set>
+            `name` = #{name},
+            `parentId` = #{parentId},
+            `description` = #{description},
+            `type` = #{type}
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryByAppName" resultType="RoleModel">
+        SELECT * FROM role WHERE appName = #{appName};
+    </select>
+
+    <select id="queryById" resultType="RoleModel">
+        SELECT * FROM role WHERE id = #{id};
+    </select>
+</mapper>

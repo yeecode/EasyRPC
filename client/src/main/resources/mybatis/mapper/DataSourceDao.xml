@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.yeecode.easyrpc.server.dao.DataSourceDao">
+    <insert id="add" parameterType="DataSourceModel">
+        INSERT INTO datasource (`name`,`url`,`password`,`driver`,`userName`)
+        VALUES (#{name},#{url},#{password},#{driver},#{userName});
+    </insert>
+
+    <delete id="deleteByName" parameterType="String">
+        DELETE FROM datasource WHERE  `name` = #{name};
+    </delete>
+
+    <update id="updateByName" parameterType="DataSourceModel">
+        UPDATE datasource
+        <set>
+            `url` = #{url},
+            `password` = #{password},
+            `driver` = #{driver},
+            `userName`=#{userName}
+        </set>
+        WHERE name = #{name}
+    </update>
+
+    <select id="queryAll" resultType="DataSourceModel">
+        SELECT * FROM datasource;
+    </select>
+
+    <select id="queryByName" resultType="DataSourceModel">
+        SELECT * FROM datasource WHERE name = #{name};
+    </select>
+</mapper>

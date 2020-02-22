@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.yeecode.easyrpc.server.dao.UserDao">
+    <insert id="add" parameterType="UserModel">
+        INSERT INTO `user` (`appName`,`name`,`key`)
+        VALUES (#{appName},#{name},#{key});
+    </insert>
+
+    <delete id="deleteByKeyAndAppName" parameterType="String">
+        DELETE FROM `user` WHERE  `key` = #{key} AND `appName` = #{appName};
+    </delete>
+
+    <update id="updateByKeyAndAppName" parameterType="UserModel">
+        UPDATE user
+        <set>
+            `name` = #{name}
+        </set>
+        WHERE `key` = #{key} AND `appName` = #{appName}
+    </update>
+
+    <select id="queryByAppName" resultType="UserModel">
+        SELECT * FROM user WHERE appName = #{appName};
+    </select>
+
+    <select id="queryByKeyAndAppName" resultType="UserModel">
+        SELECT * FROM user WHERE `key` = #{key} AND `appName` = #{appName};
+    </select>
+</mapper>
