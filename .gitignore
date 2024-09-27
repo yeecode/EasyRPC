@@ -1,7 +1,7 @@
 HELP.md
 /*/target/*
 /*/*/target/*
-!MatrixAuth*.jar
+!EasyRpc*.jar
 !*/*.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
